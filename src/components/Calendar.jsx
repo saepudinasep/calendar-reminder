@@ -18,9 +18,25 @@ export default function Calendar({ events, onDateClick, onEventClick }) {
         return () => window.removeEventListener("resize", handleResize)
     }, [])
 
+    function renderEventContent(eventInfo) {
+        return (
+            <div className="fc-event-custom">
+                <div className="fc-event-time-custom">
+                    {eventInfo.timeText}
+                </div>
+                <div className="fc-event-title-custom">
+                    {eventInfo.event.title}
+                </div>
+            </div>
+        )
+    }
+
     return (
         <div className="mx-auto max-w-6xl rounded-xl bg-white p-2 shadow sm:p-4">
             <FullCalendar
+                eventDisplay="block"
+                eventContent={renderEventContent}
+
                 plugins={[
                     dayGridPlugin,
                     timeGridPlugin,

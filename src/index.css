@@ -43,8 +43,64 @@ button {
   font-size: 1rem;
 }
 
-@media (min-width: 768px) {
-  .fc .fc-toolbar-title {
-    font-size: 1.25rem;
+/* 🔥 FIX header tabrakan di Year view mobile */
+@media (max-width: 767px) {
+  .fc-multimonth .fc-col-header {
+    display: none;
   }
+
+  .fc-multimonth .fc-daygrid-day-number {
+    font-size: 0.75rem;
+  }
+}
+
+/* ================= EVENT SCROLL FIX ================= */
+
+/* Bungkus event */
+.fc-event-custom {
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  overflow: hidden;
+  font-size: 0.75rem;
+}
+
+/* Jam */
+.fc-event-time-custom {
+  font-weight: 600;
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+
+/* Title panjang → scroll */
+.fc-event-title-custom {
+  overflow-y: auto;
+  white-space: normal;
+  line-height: 1.2;
+  max-height: 3.5em;
+}
+
+/* Scroll halus */
+.fc-event-title-custom::-webkit-scrollbar {
+  width: 3px;
+}
+.fc-event-title-custom::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+/* ================= MOBILE OPTIMIZATION ================= */
+@media (max-width: 767px) {
+  .fc-event-custom {
+    font-size: 0.7rem;
+  }
+
+  .fc-event-title-custom {
+    max-height: 2.8em;
+  }
+}
+
+.fc-daygrid-day-events {
+  max-height: 7rem;
+  overflow-y: auto;
 }

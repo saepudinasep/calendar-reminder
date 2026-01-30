@@ -34,7 +34,7 @@ export default function Calendar({ events, onDateClick, onEventClick }) {
     return (
         <div className="mx-auto max-w-6xl rounded-xl bg-white p-2 shadow sm:p-4">
             <FullCalendar
-                eventDisplay="block"
+                // eventDisplay="block"
                 eventContent={renderEventContent}
 
                 plugins={[

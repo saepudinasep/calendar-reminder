@@ -18,7 +18,7 @@ export default function EventModal({
 
     useEffect(() => {
         if (mode === 'edit' && eventData) {
-            setTitle(eventData.title)
+            setTitle(eventData.title || '')
             setTime(eventData.time || '')
         }
 
@@ -40,17 +40,11 @@ export default function EventModal({
 
     return (
         <Dialog open={open} onClose={onClose} className="relative z-50">
-            <DialogBackdrop
-                transition
-                className="fixed inset-0 bg-gray-900/50 data-[closed]:opacity-0"
-            />
+            <DialogBackdrop className="fixed inset-0 bg-gray-900/50" />
 
             <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-                <DialogPanel
-                    transition
-                    className="w-full max-w-md rounded-xl bg-white shadow-xl
-          data-[closed]:scale-95 data-[closed]:opacity-0"
-                >
+                <DialogPanel className="w-full max-w-md rounded-xl bg-white shadow-xl">
+
                     {/* Header */}
                     <div className="flex items-center justify-between border-b px-6 py-4">
                         <div className="flex items-center gap-3">
@@ -72,6 +66,7 @@ export default function EventModal({
                                     onClose()
                                 }}
                                 className="text-red-600 hover:text-red-700"
+                                title="Hapus jadwal"
                             >
                                 <TrashIcon className="h-5 w-5" />
                             </button>
@@ -81,7 +76,7 @@ export default function EventModal({
                     {/* Body */}
                     <div className="space-y-4 px-6 py-5">
                         <input
-                            className="w-full rounded-lg border px-3 py-2"
+                            className="w-full rounded-lg border px-3 py-2 focus:ring focus:ring-blue-200"
                             placeholder="Judul kegiatan"
                             value={title}
                             onChange={e => setTitle(e.target.value)}
@@ -89,7 +84,7 @@ export default function EventModal({
 
                         <input
                             type="time"
-                            className="w-full rounded-lg border px-3 py-2"
+                            className="w-full rounded-lg border px-3 py-2 focus:ring focus:ring-blue-200"
                             value={time}
                             onChange={e => setTime(e.target.value)}
                         />
@@ -105,7 +100,7 @@ export default function EventModal({
                         </button>
                         <button
                             onClick={handleSubmit}
-                            className="rounded-lg bg-blue-600 px-4 py-2 text-white"
+                            className="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
                         >
                             Simpan
                         </button>

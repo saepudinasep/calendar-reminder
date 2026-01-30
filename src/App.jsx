@@ -59,13 +59,18 @@ export default function App() {
   }
 
   /* ================= EDIT ================= */
-  const handleEventClick = (event) => {
+  const handleEventClick = (info) => {
+    const event = info.event
+
     setMode('edit')
-    setSelectedDate(event.startStr)
+    const dateOnly = event.start
+      ? event.start.toISOString().split("T")[0]
+      : ""
+    setSelectedDate(dateOnly)
     setActiveEvent({
       id: event.id,
       title: event.title,
-      time: event.extendedProps.time
+      time: event.extendedProps?.time || ""
     })
     setModalOpen(true)
   }
@@ -93,7 +98,9 @@ export default function App() {
   }
 
   /* ================= DELETE ================= */
-  const handleDelete = async (event) => {
+  const handleDelete = async (info) => {
+    const event = info.event
+
     const confirm = await confirmDelete()
     if (!confirm) return
 

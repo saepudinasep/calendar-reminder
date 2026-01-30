@@ -1,4 +1,5 @@
-const BASE_URL = "/api/exec";
+// const BASE_URL = "/api/exec";
+const BASE_URL = import.meta.env.VITE_API_BASE;
 
 export const getEvents = async () => {
   const res = await fetch(`${BASE_URL}?action=list`);
